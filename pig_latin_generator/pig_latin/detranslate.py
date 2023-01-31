@@ -10,11 +10,13 @@ def detranslate(input_str:str) -> str:
 
      #logic for converting pig latin to english
     if input_str[len(input_str) - 2:len(input_str)] == "ay":
-        if input_str[len(input_str) - 3] in consonants and input_str[len(input_str) - 4] in consonants:
+        if input_str[len(input_str) - 3] in consonants and input_str[len(input_str) - 4] in consonants and input_str[len(input_str)-3] != "w":
             output_str = input_str[len(input_str) - 4:len(input_str) - 2] + input_str[0:len(input_str) - 4]
+            #This extra test is included because some instances, it is impossible to determine if case 1 or case 2 is the correct
+            #The only way to check case is to see which one actually creates an english word
             if output_str not in words.words():
                output_str = input_str[len(input_str) - 3] + input_str[0:len(input_str)-3]
-        elif input_str[0] in vowels and input_str[len(input_str) - 3] in consonants:
+        elif input_str[0] in vowels and input_str[len(input_str) - 3] in consonants and input_str[len(input_str)-3] != "w":
             output_str = input_str[len(input_str) - 3] + input_str[0:len(input_str)-3] 
         elif input_str[len(input_str)-3] == "w":
             output_str = input_str[0:len(input_str) - 3]      
