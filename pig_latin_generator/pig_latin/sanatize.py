@@ -9,7 +9,7 @@ def sanatize(input_str:str) -> str:
     consonants = ("b","c","d","f","g","h","j","k","l","m","n","p","q","r","s","t","v","w","x","y","z")
     vowels = ("a","e","i","o","u")
     for letters in output_str:
-        if letters in consonants or letters in vowels:
+        if letters in consonants or letters in vowels or letters == " ":
             pass
         else:
             raise ValueError("Phrase contains nonalphabetic characters")
